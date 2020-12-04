@@ -47,7 +47,7 @@ export const Form = styled.form`
   }
 `;
 
-export const Repositories = styled.div`
+export const Grids = styled.div`
    margin-top: 80px;
    max-width: 700px;
 
