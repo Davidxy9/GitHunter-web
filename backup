@@ -7,46 +7,48 @@ import logoImg from '../../assets/logo.svg';
 
 import { Title, Grids } from './styles';
 
-interface languageInItemsData {
+interface language {
   id: string;
   name: string;
-  description?: string;
-  avatar_url: string;
-  login: string;
-  stargazers_count: number;
+  forks_url: string;
 }
+//import axios from 'axios';
 
 const Dashboard: React.FC = () => {
 
-  const [languagesInItems, setLanguagesInItems] = useState<languageInItemsData[]>([]);
+  const [languages, setLanguages] = useState<language[]>([]);
 
   useEffect(() => {
     api.get('https://api.github.com/search/repositories?q=java:???&sort=stars&page=1').then(response => {
-      setLanguagesInItems(response.data.items);
+      setLanguages(response.data.items);
     })
 
-  }, [languagesInItems])
+  }, [languages])
+
 
 
   return (
     <>
       <img src={logoImg} alt="Github Explorer" />
       <Title>Explore repositórios</Title>
+      {/*
+      <Form onSubmit={handleAddRepositories}>
+        <input
+          value={newRepo}
+          onChange={(e) => setNewRepo(e.target.value)}
+          placeholder="Digite a linguagem" />
+        <button type="submit">Pesquisar</button>
+      </Form> */}
 
 
       <Grids>
-        {languagesInItems.map(language => (
+        {languages.map(language => (
 
           <a key={language.id} href="/#">
 
-            <img
-              src={language.avatar_url}
-              alt={language.login}
-            />
-
             <div>
               <strong>{language.name}</strong>
-              <p>{language.stargazers_count}</p>
+              <p>{language.forks_url}</p>
 
             </div>
 
