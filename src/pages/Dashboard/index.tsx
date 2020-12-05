@@ -21,13 +21,7 @@ interface languageInItemsData {
     avatar_url: string;
   }
 }
-/*
-interface languagesInOwnerData {
-  id: number;
-  login: string;
-  avatar_url: string;
 
-} */
 
 const Dashboard: React.FC = () => {
 
@@ -37,9 +31,6 @@ const Dashboard: React.FC = () => {
     api.get('https://api.github.com/search/repositories?q=java:???&sort=stars&page=1').then(response => {
       setLanguagesInItems(response.data.items);
 
-      /*   const ownerData = response.data.owner;
-
-        setLanguagesInItems([...languagesInItems, ownerData]); */
 
 
 
@@ -50,16 +41,7 @@ const Dashboard: React.FC = () => {
 
 
 
-  /*  const [languagesInOwner, setLanguagesInOwner] = useState<languagesInOwnerData[]>([]);
 
-   useEffect(() => {
-     api.get('https://api.github.com/search/repositories?q=java:???&sort=stars&page=1').then(response => {
-       setLanguagesInOwner(response.data.owner);
-
-     })
-
-   }, [languagesInOwner]);
-  */
 
   return (
     <>
@@ -86,12 +68,7 @@ const Dashboard: React.FC = () => {
             <p>{language.forks_count}</p>
             <span>Forks</span>
 
-            {/* {languagesInOwner.map(language2 => (
-              <img key={language2.id}
-                src={language2.avatar_url}
-                alt={language2.login}
-              />
-            ))} */}
+
 
             <FiChevronRight size={20} />
           </Link >
