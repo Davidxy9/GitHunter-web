@@ -57,7 +57,7 @@ const Dashboard: React.FC = () => {
         <input
           value={newChoice}
           onChange={(e) => setNewChoice(e.target.value)}
-          placeholder="Digite o nome da linguagem" />
+          placeholder="Digite a linguagem dos repositórios" />
         <button type="submit">Pesquisar</button>
       </Form>
 
