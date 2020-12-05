@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, FormEvent } from 'react';
 import { FiChevronRight } from 'react-icons/fi';
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 import logoImg from '../../assets/logo.svg';
 
-import { Title, Grids } from './styles';
+import { Title, Grids, Form } from './styles';
 
 interface languageInItemsData {
   id: string;
@@ -26,20 +26,25 @@ interface languageInItemsData {
 const Dashboard: React.FC = () => {
 
   const [languagesInItems, setLanguagesInItems] = useState<languageInItemsData[]>([]);
+  const [newChoice, setNewChoice] = useState('');
 
-  useEffect(() => {
-    api.get('https://api.github.com/search/repositories?q=java:???&sort=stars&page=1').then(response => {
+
+  async function handleAddRepositories(event: FormEvent<HTMLFormElement>): Promise<void> {
+    event.preventDefault();
+
+    await api.get(`https://api.github.com/search/repositories?q=language:${newChoice}&sort=stars&page=1`).then(response => {
       setLanguagesInItems(response.data.items);
-
-
-
-
-
     })
 
-  }, [languagesInItems]);
 
+  }
 
+  /*  useEffect(() => {
+     api.get(`https://api.github.com/search/repositories?q=language:${newChoice}&sort=stars&page=1`).then(response => {
+       setLanguagesInItems(response.data.items);
+     })
+
+   }, [newChoice]); */
 
 
 
@@ -47,6 +52,14 @@ const Dashboard: React.FC = () => {
     <>
       <img src={logoImg} alt="Github Explorer" />
       <Title>Explore repositórios</Title>
+
+      <Form onSubmit={handleAddRepositories}>
+        <input
+          value={newChoice}
+          onChange={(e) => setNewChoice(e.target.value)}
+          placeholder="Digite o nome da linguagem" />
+        <button type="submit">Pesquisar</button>
+      </Form>
 
 
       <Grids>
