@@ -129,7 +129,7 @@ const Dashboard: React.FC = () => {
             {currentPage > 1 && (
               <PaginationItem onClick={() => setCurrentPage(currentPage - 1)}
               >
-                Previous
+                <button>Previous</button>
               </PaginationItem>
             )}
             {pages.map((page) => (
@@ -142,7 +142,7 @@ const Dashboard: React.FC = () => {
             {currentPage < pages.length && (
               <PaginationItem onClick={() => setCurrentPage(currentPage + 1)}
               >
-                Next
+                <button>Next</button>
               </PaginationItem>
             )}
 

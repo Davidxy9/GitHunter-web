@@ -127,6 +127,7 @@ export const Grids = styled.div`
       display: block;
       font-size: 20px;
       color: #3d3d4d;
+      padding-left: 5px;
     }
 
     span {
@@ -145,22 +146,59 @@ export const Grids = styled.div`
 `;
 
 export const Pagination = styled.div`
+  margin-top: 5px;
   display: flex;
   min-width: 500px;
-  justify-content: space-between;
+  justify-content: center;
+  padding-left: 100 px;
+  //margin: 0 4px;
+  align-items: center;
+
+
 `;
 
 export const PaginationButton = styled.div`
   display: flex;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background: #f0f0f5;
+
 `;
 
 export const PaginationItem = styled.div<PaginationItemProps>`
-  margin: 0 10px;
+   margin: 0 10px;
+  //border: 2px solid white;
+  border-radius: 50%;
   cursor: pointer;
+  color: black;
+  font-size: 22px;
+  font-weight: semi-bold;
+  border-radius: 1px;
+  //border-width: 5px;
+
+    button {
+      width: 100px;
+      height: 30px;
+      background: #04d361;
+      border-radius: 5px 5px 5px 5px;
+      border: 0;
+      color: #fff;
+      font-weight: bold;
+      transition: background-color 0.2s;
+
+        &:hover {
+          background: ${shade(0.2, '#04d361')};
+        }
+      }
+
 
   ${props => props.isSelect && {
-    background: '#6d6d6d',
+    borderRadius: '5px 5px 5px 5px',
+    background: '#04d361',
     padding: '0 5px',
+    transition: 'background-color .3s',
   }}
 
 `;
