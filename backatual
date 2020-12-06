@@ -1,4 +1,4 @@
-import React, { useState, FormEvent, useEffect } from 'react';
+import React, { useState, FormEvent } from 'react';
 import { FiChevronRight } from 'react-icons/fi';
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 import logoImg from '../../assets/logo.svg';
 
-import { Title, Grids, Form, Pagination, PaginationButton, PaginationItem } from './styles';
+import { Title, Grids, Form } from './styles';
 
 interface languageInItemsData {
   id: string;
@@ -27,38 +27,26 @@ const Dashboard: React.FC = () => {
 
   const [languagesInItems, setLanguagesInItems] = useState<languageInItemsData[]>([]);
   const [newChoice, setNewChoice] = useState('');
-  const total = 100;
-  const [limit, setLimit] = useState(10);
-  const [pages, setPages] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
 
 
-  function handleAddRepositories(event: FormEvent<HTMLFormElement>) {
+  async function handleAddRepositories(event: FormEvent<HTMLFormElement>): Promise<void> {
     event.preventDefault();
 
-    api.get(`https://api.github.com/search/repositories?q=language:${newChoice}&sort=stars&page=1`).then(response => {
-      console.log(response.headers);
-      const totalPages = Math.ceil(total / limit)
-
-      const arrayPages: [] = [];
-      for (let i = 1; i <= totalPages; i++) {
-        arrayPages.push(i as never);
-      }
-
-      setPages(arrayPages);
-      setLimit(10);
+    await api.get(`https://api.github.com/search/repositories?q=language:${newChoice}&sort=stars&page=1`).then(response => {
       setLanguagesInItems(response.data.items);
+      console.log(response.headers);
 
     })
+
 
   }
 
-  useEffect(() => {
-    api.get(`https://api.github.com/search/repositories?q=languages???&sort=stars&page=${currentPage}`).then(response => {
-      setLanguagesInItems(response.data.items);
-    })
+  /*  useEffect(() => {
+     api.get(`https://api.github.com/search/repositories?q=language:${newChoice}&sort=stars&page=1`).then(response => {
+       setLanguagesInItems(response.data.items);
+     })
 
-  }, [currentPage]);
+   }, [newChoice]); */
 
 
 
@@ -100,30 +88,6 @@ const Dashboard: React.FC = () => {
             <FiChevronRight size={20} />
           </Link >
         ))}
-        <Pagination>
-          <PaginationButton>
-            {currentPage > 1 && (
-              <PaginationItem onClick={() => setCurrentPage(currentPage - 1)}
-              >
-                Previous
-              </PaginationItem>
-            )}
-            {pages.map((page) => (
-              <PaginationItem
-                isSelect={page === currentPage}
-                key={page} onClick={() => setCurrentPage(page)}>
-                {page}
-              </PaginationItem>
-            ))}
-            {currentPage < pages.length && (
-              <PaginationItem onClick={() => setCurrentPage(currentPage + 1)}
-              >
-                Next
-              </PaginationItem>
-            )}
-
-          </PaginationButton>
-        </Pagination>
 
       </Grids>
     </>

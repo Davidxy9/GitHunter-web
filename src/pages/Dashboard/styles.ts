@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { shade } from 'polished';
 
+interface PaginationItemProps {
+  isSelect?: boolean;
+}
+
 export const Title = styled.h1`
     font-size: 48px;
     color: #3a3a3a;
@@ -97,3 +101,23 @@ export const Grids = styled.div`
   }
 `;
 
+export const Pagination = styled.div`
+  display: flex;
+  min-width: 500px;
+  justify-content: space-between;
+`;
+
+export const PaginationButton = styled.div`
+  display: flex;
+`;
+
+export const PaginationItem = styled.div<PaginationItemProps>`
+  margin: 0 10px;
+  cursor: pointer;
+
+  ${props => props.isSelect && {
+    background: '#6d6d6d',
+    padding: '0 5px',
+  }}
+
+`;
