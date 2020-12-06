@@ -72,7 +72,7 @@ const Dashboard: React.FC = () => {
           value={newChoice}
           onChange={(e) => setNewChoice(e.target.value)}
           placeholder="Digite a linguagem dos repositórios" />
-        <button type="submit">Pesquisar</button>
+        <button name="Button" type="submit">Pesquisar</button>
       </Form>
 
 
