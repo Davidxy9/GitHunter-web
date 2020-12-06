@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 import logoImg from '../../assets/logo.svg';
 
-import { Title, Grids, Form, Pagination, PaginationButton, PaginationItem } from './styles';
+import { Title, Grids, Form, Pagination, PaginationButton, PaginationItem, Error } from './styles';
 
 interface languageInItemsData {
   id: string;
@@ -22,6 +22,10 @@ interface languageInItemsData {
   }
 }
 
+interface nameLanguageData {
+  name: string;
+}
+
 
 const Dashboard: React.FC = () => {
 
@@ -31,25 +35,46 @@ const Dashboard: React.FC = () => {
   const [limit, setLimit] = useState(10);
   const [pages, setPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [inputError, setInputError] = useState('');
+  const [nameLanguage, setNameLanguage] = useState<nameLanguageData[]>([]);
+
 
 
   function handleAddRepositories(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
-    api.get(`https://api.github.com/search/repositories?q=language:${newChoice}&sort=stars&page=1`).then(response => {
-      console.log(response.headers);
-      const totalPages = Math.ceil(total / limit)
-
-      const arrayPages: [] = [];
-      for (let i = 1; i <= totalPages; i++) {
-        arrayPages.push(i as never);
-      }
-
-      setPages(arrayPages);
-      setLimit(10);
-      setLanguagesInItems(response.data.items);
-
+    if (!newChoice) {
+      setInputError('Digite uma linguagem');
+      return;
+    }
+    api.get('https://api.github.com/languages').then(response => {
+      setNameLanguage(response.data.name);
     })
+
+    try {
+
+
+      api.get(`https://api.github.com/search/repositories?q=language:${newChoice}&sort=stars&page=1`).then(response => {
+
+        const totalPages = Math.ceil(total / limit)
+
+        const arrayPages: [] = [];
+        for (let i = 1; i <= totalPages; i++) {
+          arrayPages.push(i as never);
+        }
+
+        setPages(arrayPages);
+        setLimit(10);
+        setLanguagesInItems(response.data.items);
+
+        setInputError('');
+
+
+      })
+
+    } catch (err) {
+      setInputError('Erro na busca por essa linguagem');
+    }
+
 
   }
 
@@ -67,7 +92,7 @@ const Dashboard: React.FC = () => {
       <img src={logoImg} alt="Github Explorer" />
       <Title>Explore repositórios</Title>
 
-      <Form onSubmit={handleAddRepositories}>
+      <Form hasError={!!inputError} onSubmit={handleAddRepositories}>
         <input
           value={newChoice}
           onChange={(e) => setNewChoice(e.target.value)}
@@ -75,6 +100,7 @@ const Dashboard: React.FC = () => {
         <button name="Button" type="submit">Pesquisar</button>
       </Form>
 
+      {inputError && <Error>{inputError}</Error>}
 
       <Grids>
         {languagesInItems.map(language => (
