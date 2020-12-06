@@ -22,9 +22,6 @@ interface languageInItemsData {
   }
 }
 
-interface nameLanguageData {
-  name: string;
-}
 
 
 const Dashboard: React.FC = () => {
@@ -36,7 +33,6 @@ const Dashboard: React.FC = () => {
   const [pages, setPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [inputError, setInputError] = useState('');
-  const [nameLanguage, setNameLanguage] = useState<nameLanguageData[]>([]);
 
 
 
@@ -46,34 +42,24 @@ const Dashboard: React.FC = () => {
       setInputError('Digite uma linguagem');
       return;
     }
-    api.get('https://api.github.com/languages').then(response => {
-      setNameLanguage(response.data.name);
+
+    api.get(`https://api.github.com/search/repositories?q=language:${newChoice}&sort=stars&page=1`).then(response => {
+
+      const totalPages = Math.ceil(total / limit)
+
+      const arrayPages: [] = [];
+      for (let i = 1; i <= totalPages; i++) {
+        arrayPages.push(i as never);
+      }
+
+      setPages(arrayPages);
+      setLimit(10);
+      setLanguagesInItems(response.data.items);
+
+      setInputError('');
+
+
     })
-
-    try {
-
-
-      api.get(`https://api.github.com/search/repositories?q=language:${newChoice}&sort=stars&page=1`).then(response => {
-
-        const totalPages = Math.ceil(total / limit)
-
-        const arrayPages: [] = [];
-        for (let i = 1; i <= totalPages; i++) {
-          arrayPages.push(i as never);
-        }
-
-        setPages(arrayPages);
-        setLimit(10);
-        setLanguagesInItems(response.data.items);
-
-        setInputError('');
-
-
-      })
-
-    } catch (err) {
-      setInputError('Erro na busca por essa linguagem');
-    }
 
 
   }
@@ -103,6 +89,7 @@ const Dashboard: React.FC = () => {
       {inputError && <Error>{inputError}</Error>}
 
       <Grids>
+
         {languagesInItems.map(language => (
 
           <Link key={language.id} target="_blank" to={`//github.com/${language.full_name}`}>
@@ -116,11 +103,22 @@ const Dashboard: React.FC = () => {
               <p>{language.description}</p>
             </div>
 
-            <strong>{language.stargazers_count}</strong>
+            <ul>
+              <li>
+                <strong>{language.stargazers_count}</strong>
+                <span>Stars</span>
+              </li>
+              <li>
+                <strong>{language.forks_count}</strong>
+                <span>Forks</span>
+              </li>
+            </ul>
+
+            {/*  <strong>{language.stargazers_count}</strong>
             <span>Stars</span>
             <p>{language.forks_count}</p>
             <span>Forks</span>
-
+ */}
 
 
             <FiChevronRight size={20} />

@@ -109,7 +109,34 @@ export const Grids = styled.div`
         color: #a8a8b3;
         margin-top: 4px;
       }
+    } //fim da div
+
+    ul {
+    display: flex;
+    list-style: none;
+    margin-top: 10px;
+  }
+
+  li {
+    & + li {
+      margin-left: 40px;
+      padding-right: 20px;
     }
+
+    strong {
+      display: block;
+      font-size: 20px;
+      color: #3d3d4d;
+    }
+
+    span {
+      display: block;
+      margin-top: 4px;
+      color: #6c6c80;
+      padding-left: 10px;
+    }
+  }
+
     svg {
       margin-left: auto;
       color: #cbcbd6;
