@@ -27,7 +27,6 @@ export const Title = styled.h1`
 
     margin-top: 80px;
     animation: ${appearFromLeft} 1s;
-
 `;
 
 export const Form = styled.form<FormProps>`
@@ -46,7 +45,6 @@ export const Form = styled.form<FormProps>`
     border: 2px solid #fff;
     border-right: 0;
     animation: ${appearFromLeft} 1s;
-
 
     ${props =>
     props.hasError &&
@@ -70,7 +68,6 @@ export const Form = styled.form<FormProps>`
     transition: background-color 0.2s;
     animation: ${appearFromLeft} 1s;
 
-
     &:hover {
       background: ${shade(0.2, '#04d361')};
     }
@@ -82,10 +79,91 @@ export const Error = styled.span`
   color: #c53030;
   margin-top: 30px;
   animation: ${appearFromLeft} 1s;
-
 `;
 
+export const Grids = styled.div`
+   animation: ${appearFromLeft} 1s;
+   margin-top: 10px;
+   max-width: 700px;
 
+
+  a {
+    background: #fff;
+    border-radius: 5px;
+    width: 120%;
+    padding: 24px;
+    display: block;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      transform: translateX(10px);
+    }
+
+    & + a {
+      margin-top: 16px;
+    }
+
+    img {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+    }
+    div {
+      margin: 0 16px;
+      flex: 1;
+
+      strong {
+        font-size: 20px;
+        color: #3d3d4d;
+      }
+      p {
+        font-size: 18px;
+        color: #a8a8b3;
+        margin-top: 4px;
+        overflow: hidden; /* Removendo barra de rolagem */
+        text-overflow: ellipsis; /* Adicionando "..." ao final */
+        display: -webkit-box; /**/
+        -webkit-line-clamp: 2; /* Quantidade de linhas */
+        -webkit-box-orient: vertical; /**/
+      }
+    } //fim da div
+
+    ul {
+    display: flex;
+    list-style: none;
+    margin-top: 10px;
+  }
+
+  li {
+    & + li {
+      margin-left: 40px;
+      padding-right: 20px;
+    }
+
+    strong {
+      display: block;
+      font-size: 20px;
+      color: #3d3d4d;
+      padding-left: 5px;
+    }
+
+    span {
+      display: block;
+      margin-top: 4px;
+      color: #6c6c80;
+      padding-left: 10px;
+    }
+  }
+
+    svg {
+      margin-left: auto;
+      color: #cbcbd6;
+    }
+  }
+`;
 
 export const Pagination = styled.div`
   margin-top: 5px;
@@ -144,13 +222,13 @@ export const PaginationItem = styled.div<PaginationItemProps>`
   }}
 
 `;
-
 export const TextLinkGrid = styled.div`
   color: white;
   font-weight: semi-bold;
   text-decoration: none;
 
 `;
+
 
 export const StarsAndForksText = styled.text`
   font-weight: bold;

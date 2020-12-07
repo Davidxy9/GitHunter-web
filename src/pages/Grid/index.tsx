@@ -5,7 +5,10 @@ import {
   CardSubtitle, CardBody
 } from 'reactstrap';
 import api from '../../services/api';
-import { Title, Form, Pagination, PaginationButton, PaginationItem, Error, TextLinkGrid, StarsAndForksText } from './styles';
+import {
+  Title, Form, Pagination, PaginationButton,
+  PaginationItem, Error, TextLinkGrid, StarsAndForksText
+} from './styles';
 import { Link } from 'react-router-dom';
 import './stylesCard.css';
 import { BsGrid3X3, FiChevronRight } from 'react-icons/all';
