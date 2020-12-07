@@ -40,6 +40,7 @@ const Repository: React.FC = () => {
   const [inputError, setInputError] = useState('');
 
 
+
   function handleAddRepositories(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!newChoice) {
@@ -82,14 +83,8 @@ const Repository: React.FC = () => {
       <Container >
         <img src={logoImg} alt="Github Explorer" />
         <Title>Explore repositórios</Title>
-        <Link to={`/`}>
-          <Button className="ListDash" color="secondary">
-            <TextLinkGrid>LIST</TextLinkGrid>
 
-            <BsGrid3X3 size={40} />
-          </Button>
 
-        </Link>
 
         <Form hasError={!!inputError} onSubmit={handleAddRepositories}>
           <input
@@ -100,6 +95,15 @@ const Repository: React.FC = () => {
         </Form>
 
         {inputError && <Error>{inputError}</Error>}
+
+        <Link style={{ marginRight: '710px', marginTop: '80px', paddingTop: '80px' }} to={`/`}>
+          <Button className="ListDash" color="secondary">
+            <TextLinkGrid>LIST</TextLinkGrid>
+
+            <BsGrid3X3 size={40} />
+          </Button>
+
+        </Link>
 
         <Row className="Top">
           {languagesInItems.map(language => (
@@ -114,9 +118,36 @@ const Repository: React.FC = () => {
                 </CardBody>
               </Card>
             </Col>
+
           ))};
+           <Pagination>
+            <PaginationButton>
+              {currentPage > 1 && (
+                <PaginationItem onClick={() => setCurrentPage(currentPage - 1)}
+                >
+                  <button>Previous</button>
+                </PaginationItem>
+              )}
+              {pages.map((page) => (
+                <PaginationItem
+                  isSelect={page === currentPage}
+                  key={page} onClick={() => setCurrentPage(page)}>
+                  {page}
+                </PaginationItem>
+              ))}
+              {currentPage < pages.length && (
+                <PaginationItem onClick={() => setCurrentPage(currentPage + 1)}
+                >
+                  <button>Next</button>
+                </PaginationItem>
+              )}
+
+            </PaginationButton>
+          </Pagination>
+
 
         </Row>
+
       </Container>
     </>
 

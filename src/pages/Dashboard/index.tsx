@@ -89,8 +89,10 @@ const Dashboard: React.FC = () => {
         <button name="ButtonSubmit" type="submit">Pesquisar</button>
 
       </Form>
-      <Link to={`/repository`}>
-        <Button style={{ marginRight: '740px', marginTop: '30px' }} className="ListDash" color="secondary">
+      { inputError && <Error>{inputError}</Error>}
+
+      <Link style={{ marginRight: '740px', marginTop: '30px' }} to={`/repository`}>
+        <Button className="ListDash" color="secondary">
           <TextLinkGrid>GRID</TextLinkGrid>
 
           <BsGrid3X3 size={40} />
@@ -98,7 +100,6 @@ const Dashboard: React.FC = () => {
 
       </Link>
 
-      { inputError && <Error>{inputError}</Error>}
 
       <Grids>
 
