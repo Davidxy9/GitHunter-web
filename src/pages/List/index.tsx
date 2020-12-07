@@ -10,7 +10,7 @@ import logoImg from '../../assets/logo.svg';
 
 import {
   Title, Grids, Form, Pagination, PaginationButton,
-  PaginationItem, TextLinkGrid, Error, Texth1, ContainerList
+  PaginationItem, TextLinkGrid, Error, ContainerList
 } from './styles';
 import { BsGrid3X3 } from 'react-icons/all';
 
@@ -95,13 +95,14 @@ const Dashboard: React.FC = () => {
       { inputError && <Error>{inputError}</Error>}
 
       <ContainerList>
-        <div className="container-left" >
-          <Texth1>
+        <div className="container-left">
+          <h1>
             Repositórios principais
-          </Texth1>
+          </h1>
         </div>
-        <div className="container-right" >
-          <Link style={{ marginRight: '740px', marginTop: '30px' }} to={`/grid`}>
+
+        <div className="container-right">
+          <Link to={'/grid'}>
             <Button
               className="ListDash"
               style={{ marginTop: '10px', height: '43px', paddingTop: '4px 12px' }}
@@ -110,12 +111,9 @@ const Dashboard: React.FC = () => {
 
               <BsGrid3X3 size={17} />
             </Button>
-
           </Link>
         </div>
-
       </ContainerList>
-
 
       <Grids>
 

@@ -230,17 +230,17 @@ export const TextLinkGrid = styled.div`
 
 `;
 
-export const Texth1 = styled.h1`
-    font-size: 34px;
-    color: rgb(58, 58, 58);
-    max-width: 500px;
-    line-height: 56px;
-    margin-top: 20px;
-`;
 
 export const ContainerList = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  background: red;
-  width: 30%;
+  width: 91%;
+
+  h1 {
+    font-size: 34px;
+    color: rgb(58, 58, 58);
+    line-height: 56px;
+    margin-top: 20px;
+  }
 `;
