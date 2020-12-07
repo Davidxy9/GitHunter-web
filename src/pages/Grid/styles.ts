@@ -166,7 +166,7 @@ export const Grids = styled.div`
 `;
 
 export const Pagination = styled.div`
-  margin-top: 5px;
+  margin-top: 20px;
   display: flex;
   min-width: 500px;
   justify-content: center;

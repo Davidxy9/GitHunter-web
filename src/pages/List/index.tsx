@@ -8,7 +8,10 @@ import { Button } from 'reactstrap';
 
 import logoImg from '../../assets/logo.svg';
 
-import { Title, Grids, Form, Pagination, PaginationButton, PaginationItem, TextLinkGrid, Error } from './styles';
+import {
+  Title, Grids, Form, Pagination, PaginationButton,
+  PaginationItem, TextLinkGrid, Error, Texth1
+} from './styles';
 import { BsGrid3X3 } from 'react-icons/all';
 
 
@@ -92,14 +95,14 @@ const Dashboard: React.FC = () => {
       { inputError && <Error>{inputError}</Error>}
 
       <Link style={{ marginRight: '740px', marginTop: '30px' }} to={`/grid`}>
-        <Button className="ListDash" style={{ marginTop: '10px' }} color="secondary">
+        <Button className="ListDash" style={{ marginTop: '10px', height: '43px', paddingTop: '4px 12px' }} color="secondary">
           <TextLinkGrid>GRID</TextLinkGrid>
 
-          <BsGrid3X3 size={40} />
+          <BsGrid3X3 size={17} />
         </Button>
 
       </Link>
-
+      <Texth1>Repositórios principais</Texth1>
 
       <Grids>
 
