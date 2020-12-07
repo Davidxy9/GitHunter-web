@@ -8,7 +8,7 @@ import api from '../../services/api';
 import { Title, Form, Pagination, PaginationButton, PaginationItem, Error, TextLinkGrid, StarsAndForksText } from './styles';
 import { Link } from 'react-router-dom';
 import './stylesCard.css';
-import { BsGrid3X3 } from 'react-icons/all';
+import { BsGrid3X3, FiChevronRight } from 'react-icons/all';
 
 
 
@@ -97,7 +97,7 @@ const Repository: React.FC = () => {
         {inputError && <Error>{inputError}</Error>}
 
         <Link style={{ marginRight: '710px', marginTop: '80px', paddingTop: '80px' }} to={`/`}>
-          <Button className="ListDash" color="secondary">
+          <Button className="ListDash" style={{ color: 'white', marginTop: '10px' }} color="secondary">
             <TextLinkGrid>LIST</TextLinkGrid>
 
             <BsGrid3X3 size={40} />
@@ -105,22 +105,29 @@ const Repository: React.FC = () => {
 
         </Link>
 
-        <Row className="Top">
+        <Row className="Top" style={{ marginTop: '10px' }}>
           {languagesInItems.map(language => (
-            <Col xs="6" sm="4">
-              <Card classname="CardStyles">
-                <CardImg top width="100%" src={language.owner.avatar_url} alt={language.owner.login} />
-                <CardBody>
-                  <CardTitle tag="h5">{language.name}</CardTitle>
-                  <CardSubtitle tag="h6" className="mb-2 text-muted">{language.description}</CardSubtitle>
-                  <CardText><StarsAndForksText>Stars:</StarsAndForksText>{language.stargazers_count}
-                    <StarsAndForksText>Forks:</StarsAndForksText>{language.forks_count}</CardText>
-                  <Button>Button</Button>
-                </CardBody>
-              </Card>
+            <Col xs="6" sm="4" style={{ display: 'flex', flexWrap: 'wrap' }}>
+              <Link style={{ textDecoration: 'none' }} key={language.id} target="_blank" to={`//github.com/${language.full_name}`}>
+                <Card classname="CardStyles" style={{ marginTop: '10px' }}>
+                  <CardImg top width="100%" src={language.owner.avatar_url} alt={language.owner.login} />
+                  <CardBody>
+                    <CardTitle tag="h5">{language.name}</CardTitle>
+                    <CardSubtitle tag="h6" className="mb-2 text-muted">{language.description}</CardSubtitle>
+                    <CardText><StarsAndForksText>Stars:</StarsAndForksText>{language.stargazers_count}
+                      <StarsAndForksText>Forks:</StarsAndForksText>{language.forks_count}</CardText>
+
+                    <FiChevronRight style={{ marginLeft: '90px', color: '#cbcbd6' }} size={20} />
+
+                  </CardBody>
+
+                </Card>
+              </Link>
             </Col>
 
+
           ))}
+
           <Pagination>
             <PaginationButton>
               {currentPage > 1 && (
@@ -149,7 +156,10 @@ const Repository: React.FC = () => {
 
         </Row>
 
+
+
       </Container>
+
     </>
 
 

@@ -92,7 +92,7 @@ const Dashboard: React.FC = () => {
       { inputError && <Error>{inputError}</Error>}
 
       <Link style={{ marginRight: '740px', marginTop: '30px' }} to={`/repository`}>
-        <Button className="ListDash" color="secondary">
+        <Button className="ListDash" style={{ marginTop: '10px' }} color="secondary">
           <TextLinkGrid>GRID</TextLinkGrid>
 
           <BsGrid3X3 size={40} />
