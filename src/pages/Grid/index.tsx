@@ -107,12 +107,12 @@ const Grid: React.FC = () => {
           </div>
 
           <div className="container-right">
-            <Link to={'/grid'}>
+            <Link to={'/'}>
               <Button
                 className="ListDash"
                 style={{ marginTop: '10px', height: '43px', paddingTop: '4px 12px' }}
                 color="secondary">
-                <TextLinkGrid>GRID</TextLinkGrid>
+                <TextLinkGrid>LIST</TextLinkGrid>
 
                 <BsGrid3X3 size={17} />
               </Button>
@@ -129,13 +129,30 @@ const Grid: React.FC = () => {
                 to={`//github.com/${language.full_name}`}
 
               >
-                <Card classname="CardStyles" style={{ marginTop: '10px' }}>
-                  <CardImg top width="100%" src={language.owner.avatar_url} alt={language.owner.login} />
+                <Card
+                  classname="CardStyles"
+                  style={{ marginTop: '10px' }}>
+                  <CardImg
+                    top width="100%"
+                    src={language.owner.avatar_url}
+                    alt={language.owner.login} />
                   <CardBody>
                     <CardTitle tag="h5">{language.name}</CardTitle>
-                    <CardSubtitle tag="h6" className="mb-10 text-muted limitText">{language.description}</CardSubtitle>
-                    <CardText><StarsAndForksText>Stars:</StarsAndForksText>{language.stargazers_count}
-                      <StarsAndForksText>Forks:</StarsAndForksText>{language.forks_count}</CardText>
+                    <CardSubtitle
+                      tag="h6"
+                      className="mb-10 text-muted limitText">
+                      {language.description}
+                    </CardSubtitle>
+                    <CardText>
+                      <StarsAndForksText>
+                        Stars:
+                        </StarsAndForksText>
+                      {language.stargazers_count}
+                      <StarsAndForksText>
+                        Forks:
+                        </StarsAndForksText>
+                      {language.forks_count}
+                    </CardText>
 
                     <FiChevronRight style={{ marginLeft: '90px', color: '#cbcbd6' }} size={20} />
 
