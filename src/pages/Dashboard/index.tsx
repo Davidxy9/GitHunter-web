@@ -2,12 +2,15 @@ import React, { useState, FormEvent, useEffect } from 'react';
 import { FiChevronRight } from 'react-icons/fi';
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
+import { Button } from 'reactstrap';
 
 
 
 import logoImg from '../../assets/logo.svg';
 
-import { Title, Grids, Form, Pagination, PaginationButton, PaginationItem, Error } from './styles';
+import { Title, Grids, Form, Pagination, PaginationButton, PaginationItem, TextLinkGrid, Error } from './styles';
+import { BsGrid3X3 } from 'react-icons/all';
+
 
 interface languageInItemsData {
   id: string;
@@ -83,10 +86,19 @@ const Dashboard: React.FC = () => {
           value={newChoice}
           onChange={(e) => setNewChoice(e.target.value)}
           placeholder="Digite a linguagem dos repositórios" />
-        <button name="Button" type="submit">Pesquisar</button>
-      </Form>
+        <button name="ButtonSubmit" type="submit">Pesquisar</button>
 
-      {inputError && <Error>{inputError}</Error>}
+      </Form>
+      <Link to={`/repository`}>
+        <Button style={{ marginRight: '740px', marginTop: '30px' }} className="ListDash" color="secondary">
+          <TextLinkGrid>GRID</TextLinkGrid>
+
+          <BsGrid3X3 size={40} />
+        </Button>
+
+      </Link>
+
+      { inputError && <Error>{inputError}</Error>}
 
       <Grids>
 

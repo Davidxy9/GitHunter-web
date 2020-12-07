@@ -68,7 +68,7 @@ export const Error = styled.span`
 `;
 
 export const Grids = styled.div`
-   margin-top: 10px;
+   margin-top: 80px;
    max-width: 700px;
 
 
@@ -202,6 +202,7 @@ export const PaginationItem = styled.div<PaginationItemProps>`
   }}
 
 `;
+
 export const TextLinkGrid = styled.div`
   color: white;
   font-weight: semi-bold;
