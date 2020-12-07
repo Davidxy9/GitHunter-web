@@ -7,7 +7,7 @@ import {
 import api from '../../services/api';
 import {
   Title, Form, Pagination, PaginationButton,
-  PaginationItem, Error, TextLinkGrid, StarsAndForksText
+  PaginationItem, Error, TextLinkGrid, StarsAndForksText, ContainerList
 } from './styles';
 import { Link } from 'react-router-dom';
 import './stylesCard.css';
@@ -99,14 +99,26 @@ const Grid: React.FC = () => {
 
         {inputError && <Error>{inputError}</Error>}
 
-        <Link style={{ marginRight: '710px', marginTop: '80px', paddingTop: '80px' }} to={`/`}>
-          <Button className="ListDash" style={{ color: 'white', marginTop: '10px' }} color="secondary">
-            <TextLinkGrid>LIST</TextLinkGrid>
+        <ContainerList>
+          <div className="container-left">
+            <h1>
+              Repositórios principais
+          </h1>
+          </div>
 
-            <BsGrid3X3 size={40} />
-          </Button>
+          <div className="container-right">
+            <Link to={'/grid'}>
+              <Button
+                className="ListDash"
+                style={{ marginTop: '10px', height: '43px', paddingTop: '4px 12px' }}
+                color="secondary">
+                <TextLinkGrid>GRID</TextLinkGrid>
 
-        </Link>
+                <BsGrid3X3 size={17} />
+              </Button>
+            </Link>
+          </div>
+        </ContainerList>
 
         <Row className="Top" style={{ marginTop: '10px' }}>
           {languagesInItems.map(language => (

@@ -223,6 +223,7 @@ export const PaginationItem = styled.div<PaginationItemProps>`
 
 `;
 export const TextLinkGrid = styled.div`
+  font-size: 9px;
   color: white;
   font-weight: semi-bold;
   text-decoration: none;
@@ -236,5 +237,19 @@ export const StarsAndForksText = styled.text`
   & + text{
    margin-left: 5px;
 
+  }
+`;
+
+export const ContainerList = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  h1 {
+    font-size: 34px;
+    color: rgb(58, 58, 58);
+    line-height: 56px;
+    margin-top: 20px;
   }
 `;
