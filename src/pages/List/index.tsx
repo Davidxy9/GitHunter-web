@@ -91,7 +91,7 @@ const Dashboard: React.FC = () => {
       </Form>
       { inputError && <Error>{inputError}</Error>}
 
-      <Link style={{ marginRight: '740px', marginTop: '30px' }} to={`/repository`}>
+      <Link style={{ marginRight: '740px', marginTop: '30px' }} to={`/grid`}>
         <Button className="ListDash" style={{ marginTop: '10px' }} color="secondary">
           <TextLinkGrid>GRID</TextLinkGrid>
 

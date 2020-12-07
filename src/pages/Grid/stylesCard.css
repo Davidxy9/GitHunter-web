@@ -1,0 +1,22 @@
+/* .CardStyles {
+  margin-top: 10px;
+  height: 20px !important;
+}
+
+.Top{
+  margin-top: 20px !important;
+  max-height: 20px;
+}
+ */
+/* .ListDash{
+  color: white !important;
+}
+ */
+
+.limitText {
+  overflow: hidden; /* Removendo barra de rolagem */
+  text-overflow: ellipsis; /* Adicionando "..." ao final */
+  display: -webkit-box; /**/
+  -webkit-line-clamp: 2; /* Quantidade de linhas */
+  -webkit-box-orient: vertical; /**/
+}

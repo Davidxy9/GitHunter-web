@@ -30,7 +30,7 @@ interface languageInItemsData {
 
 
 
-const Repository: React.FC = () => {
+const Grid: React.FC = () => {
   const [languagesInItems, setLanguagesInItems] = useState<languageInItemsData[]>([]);
   const [newChoice, setNewChoice] = useState('');
   const total = 100;
@@ -118,7 +118,7 @@ const Repository: React.FC = () => {
                   <CardImg top width="100%" src={language.owner.avatar_url} alt={language.owner.login} />
                   <CardBody>
                     <CardTitle tag="h5">{language.name}</CardTitle>
-                    <CardSubtitle tag="h6" className="mb-2 text-muted">{language.description}</CardSubtitle>
+                    <CardSubtitle tag="h6" className="mb-10 text-muted limitText">{language.description}</CardSubtitle>
                     <CardText><StarsAndForksText>Stars:</StarsAndForksText>{language.stargazers_count}
                       <StarsAndForksText>Forks:</StarsAndForksText>{language.forks_count}</CardText>
 
@@ -171,4 +171,4 @@ const Repository: React.FC = () => {
   )
 }
 
-export default Repository;
+export default Grid;
