@@ -5,7 +5,7 @@ import {
   CardSubtitle, CardBody
 } from 'reactstrap';
 import api from '../../services/api';
-import { Title, Grids, Form, Pagination, PaginationButton, PaginationItem, Error, TextLinkGrid } from './styles';
+import { Title, Form, Pagination, PaginationButton, PaginationItem, Error, TextLinkGrid, StarsAndForksText } from './styles';
 import { Link } from 'react-router-dom';
 import './stylesCard.css';
 import { BsGrid3X3 } from 'react-icons/all';
@@ -113,14 +113,15 @@ const Repository: React.FC = () => {
                 <CardBody>
                   <CardTitle tag="h5">{language.name}</CardTitle>
                   <CardSubtitle tag="h6" className="mb-2 text-muted">{language.description}</CardSubtitle>
-                  <CardText>stars:{language.stargazers_count} forks:{language.forks_count}</CardText>
+                  <CardText><StarsAndForksText>Stars:</StarsAndForksText>{language.stargazers_count}
+                    <StarsAndForksText>Forks:</StarsAndForksText>{language.forks_count}</CardText>
                   <Button>Button</Button>
                 </CardBody>
               </Card>
             </Col>
 
-          ))};
-           <Pagination>
+          ))}
+          <Pagination>
             <PaginationButton>
               {currentPage > 1 && (
                 <PaginationItem onClick={() => setCurrentPage(currentPage - 1)}

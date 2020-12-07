@@ -209,3 +209,12 @@ export const TextLinkGrid = styled.div`
   text-decoration: none;
 
 `;
+
+export const StarsAndForksText = styled.text`
+  font-weight: bold;
+
+  & + text{
+   margin-left: 5px;
+
+  }
+`;
