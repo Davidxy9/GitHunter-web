@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { shade } from 'polished';
 
 interface PaginationItemProps {
@@ -9,6 +9,16 @@ interface FormProps {
   hasError: boolean;
 }
 
+const appearFromLeft = keyframes`
+  from{
+    opacity: 0;
+    transform: translateX(-50px);
+  }to{
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
+
 export const Title = styled.h1`
     font-size: 48px;
     color: #3a3a3a;
@@ -16,6 +26,7 @@ export const Title = styled.h1`
     line-height: 56px;
 
     margin-top: 80px;
+    animation: ${appearFromLeft} 1s;
 `;
 
 export const Form = styled.form<FormProps>`
@@ -33,6 +44,7 @@ export const Form = styled.form<FormProps>`
     color: #3a3a3a;
     border: 2px solid #fff;
     border-right: 0;
+    animation: ${appearFromLeft} 1s;
 
     ${props =>
     props.hasError &&
@@ -54,6 +66,7 @@ export const Form = styled.form<FormProps>`
     color: #fff;
     font-weight: bold;
     transition: background-color 0.2s;
+    animation: ${appearFromLeft} 1s;
 
     &:hover {
       background: ${shade(0.2, '#04d361')};
@@ -65,9 +78,11 @@ export const Error = styled.span`
   display: block;
   color: #c53030;
   margin-top: 30px;
+  animation: ${appearFromLeft} 1s;
 `;
 
 export const Grids = styled.div`
+   animation: ${appearFromLeft} 1s;
    margin-top: 10px;
    max-width: 700px;
 

@@ -108,7 +108,12 @@ const Repository: React.FC = () => {
         <Row className="Top" style={{ marginTop: '10px' }}>
           {languagesInItems.map(language => (
             <Col xs="6" sm="4" style={{ display: 'flex', flexWrap: 'wrap' }}>
-              <Link style={{ textDecoration: 'none' }} key={language.id} target="_blank" to={`//github.com/${language.full_name}`}>
+              <Link style={{ textDecoration: 'none' }}
+                key={language.id}
+                target="_blank"
+                to={`//github.com/${language.full_name}`}
+
+              >
                 <Card classname="CardStyles" style={{ marginTop: '10px' }}>
                   <CardImg top width="100%" src={language.owner.avatar_url} alt={language.owner.login} />
                   <CardBody>
