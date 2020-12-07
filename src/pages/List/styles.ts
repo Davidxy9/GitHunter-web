@@ -237,3 +237,10 @@ export const Texth1 = styled.h1`
     line-height: 56px;
     margin-top: 20px;
 `;
+
+export const ContainerList = styled.div`
+  display: flex;
+  justify-content: space-between;
+  background: red;
+  width: 30%;
+`;
